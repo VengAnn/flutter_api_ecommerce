@@ -1,7 +1,7 @@
 import 'package:api_with_facke_store/models/product_res_model.dart';
 import 'package:api_with_facke_store/services/api_helper.dart';
 import 'package:flutter/material.dart';
-import '../widgets/product_cart_resuable_widget.dart';
+import '../../widgets/product_cart_resuable_widget.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
