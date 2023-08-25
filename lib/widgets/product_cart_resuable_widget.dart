@@ -1,5 +1,5 @@
 // ignore: unnecessary_import
-import 'package:api_with_facke_store/Screens/product_detail_screen.dart';
+import 'package:api_with_facke_store/Screens/products/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/product_res_model.dart';
 
