@@ -26,7 +26,7 @@ class ProductResModel {
       category: json['category'],
       image: json['image'],
       rating: Rating(
-        rate: json['rating']['rate'].toDouble(),
+        rate: json['rating']['rate'],
         count: json['rating']['count'],
       ),
     );
@@ -34,7 +34,7 @@ class ProductResModel {
 }
 
 class Rating {
-  final double rate;
+  final dynamic rate;
   final int count;
   //Constructor
   Rating({required this.rate, required this.count});

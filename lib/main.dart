@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       // ignore: prefer_const_constructors
-      home: Homescreen(),
+      home: ProductScreen(),
     );
   }
 }

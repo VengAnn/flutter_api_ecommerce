@@ -89,6 +89,7 @@ class ProductDetailScreen extends StatelessWidget {
                         height: 20,
                       ),
                       RichText(
+                        textAlign: TextAlign.justify,
                         text: TextSpan(
                           text: "Description: ",
                           style: const TextStyle(
@@ -108,6 +109,27 @@ class ProductDetailScreen extends StatelessWidget {
                             ),
                           ],
                         ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Rate: ${productResModel.rating.rate}",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "(${productResModel.rating.count})",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
