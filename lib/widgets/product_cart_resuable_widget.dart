@@ -1,5 +1,6 @@
 // ignore: unnecessary_import
 import 'package:api_with_facke_store/Screens/products/product_detail_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/product_res_model.dart';
 
@@ -32,9 +33,18 @@ class Product_cart_reusable_widget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-                child: Image.network(
-                  product.image,
-                  fit: BoxFit.contain,
+                //   child: Image.network(
+                //     product.image,
+                //     fit: BoxFit.contain,
+                //   ),
+                // ),
+                child: CachedNetworkImage(
+                  // ignore: unnecessary_string_interpolations
+                  imageUrl: "${product.image}",
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      CircularProgressIndicator(
+                          value: downloadProgress.progress),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
               //

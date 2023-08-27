@@ -1,4 +1,5 @@
 import 'package:api_with_facke_store/models/product_res_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -28,7 +29,15 @@ class ProductDetailScreen extends StatelessWidget {
               ],
             ),
             //
-            Expanded(child: Image.network(productResModel.image)),
+            Expanded(
+              child: CachedNetworkImage(
+                // ignore: unnecessary_string_interpolations
+                imageUrl: "${productResModel.image}",
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
             const SizedBox(
               height: 10.0,
             ),
@@ -55,54 +64,53 @@ class ProductDetailScreen extends StatelessWidget {
               //in container
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      // ignore: unnecessary_string_interpolations
-                      "${productResModel.title}",
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    //
-                    Text(
-                      "Price: \$${productResModel.price}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    //  Text(
-                    //   "Description ${productResModel.description}",
-                    //   style: const TextStyle(
-                    //     fontSize: 16,
-                    //   ),
-                    // ),
-                    //
-                    RichText(
-                      text: TextSpan(
-                        text: "Description: ",
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        // ignore: unnecessary_string_interpolations
+                        "${productResModel.title}",
                         style: const TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                         ),
-                        children: [
-                          TextSpan(
-                            // ignore: unnecessary_string_interpolations
-                            text: "${productResModel.description}",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ],
+                        textAlign: TextAlign.justify,
                       ),
-                    ),
-                  ],
+                      //
+                      Text(
+                        "Price: \$${productResModel.price}",
+                        style: const TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: "Description: ",
+                          style: const TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                          children: [
+                            TextSpan(
+                              // ignore: unnecessary_string_interpolations
+                              text: "${productResModel.description}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

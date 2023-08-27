@@ -33,7 +33,7 @@ class APIHelper {
       final uri = Uri.parse("https://fakestoreapi.com/products/categories");
       final response = await http.get(uri);
       final data = jsonDecode(response.body);
-      print("data $data");
+      // print("data $data");
       return data.map<String>((e) => e.toString()).toList();
     } catch (e) {
       QuickAlert.show(
@@ -53,6 +53,7 @@ class APIHelper {
       String uri = "https://fakestoreapi.com/products/category/$categoryName";
       final response = await http.get(Uri.parse(uri));
       final data = jsonDecode(response.body);
+      // ignore: avoid_print
       print("data $data");
       return data
           .map<ProductResModel>((e) => ProductResModel.fromJson(e))

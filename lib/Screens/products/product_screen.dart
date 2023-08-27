@@ -61,6 +61,10 @@ class _HomescreenState extends State<Homescreen> {
                         height: 40,
                         width: MediaQuery.of(context).size.width - 96,
                         child: TextField(
+                          onChanged: (value) {
+                            // ignore: avoid_print
+                            print(value);
+                          },
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.grey[100],
@@ -137,12 +141,16 @@ class _HomescreenState extends State<Homescreen> {
             switch (index) {
               case 0:
                 icon = Icons.electric_bolt_outlined;
+                break;
               case 1:
                 icon = Icons.work;
+                break;
               case 2:
                 icon = Icons.category;
+                break;
               default:
                 icon = Icons.shopping_bag_outlined;
+                break;
             }
             String categoryName = lsCategories[index];
             return ListTile(
